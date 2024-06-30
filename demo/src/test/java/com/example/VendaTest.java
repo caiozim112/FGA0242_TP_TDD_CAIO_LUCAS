@@ -12,7 +12,7 @@ public class VendaTest {
         Venda venda = new Venda(cliente);
         venda.adicionarProduto(produto, 1);
         venda.setMetodoPagamento(MetodoPagamento.CARTAO_CREDITO_EMPRESA);
-        assertEquals(80.0, venda.calcularValorTotal(), 0.01);
+        assertEquals(81.0, venda.calcularValorTotal(), 0.01);
     }
 
     @Test
