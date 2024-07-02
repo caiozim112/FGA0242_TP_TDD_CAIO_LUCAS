@@ -61,7 +61,7 @@ public class Venda {
 
         switch (estado) {
             case "DF":
-                frete = isCapital ? 5.0 : 0.0;
+                frete = 5.0;
                 break;
             case "GO":
             case "MS":
