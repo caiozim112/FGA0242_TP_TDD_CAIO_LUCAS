@@ -14,14 +14,14 @@ public class Venda {
         this.produtos = new ArrayList<>();
     }
 
+    public void setMetodoPagamento(MetodoPagamento metodoPagamento) {
+        this.metodoPagamento = metodoPagamento;
+    }
+
     public void adicionarProduto(Produto produto, int quantidade) {
         for (int i = 0; i < quantidade; i++) {
             this.produtos.add(produto);
         }
-    }
-
-    public void setMetodoPagamento(MetodoPagamento metodoPagamento) {
-        this.metodoPagamento = metodoPagamento;
     }
 
     public void setEnderecoEntrega(Endereco endereco) {
@@ -29,26 +29,21 @@ public class Venda {
     }
 
     public double calcularValorTotal() {
-        double total = 0.0;
+        CalculoVenda calculo = new CalculoVenda(cliente);
+
         for (Produto produto : produtos) {
-            total += produto.getValor();
+            calculo.produtos.add(produto);
         }
 
-        if (cliente.getTipo() == ClienteTipo.ESPECIAL) {
-            total *= 0.9; // 10% de desconto
-            if (metodoPagamento == MetodoPagamento.CARTAO_CREDITO_EMPRESA) {
-                total *= 0.9; // Mais 10% de desconto
-            }
-        } else if (cliente.getTipo() == ClienteTipo.PRIME) {
-            double cashback = total * 0.03; // Cashback de 3%
-            if (metodoPagamento == MetodoPagamento.CARTAO_CREDITO_EMPRESA) {
-                cashback = total * 0.05; // Cashback de 5%
-            }
-            cliente.adicionarCashback(cashback);
-        }
+        calculo.setMetodoPagamento(metodoPagamento);
 
-        return total;
+        return calculo.calcular();
     }
+
+    /*
+    Comentário (Trabalho 2: Refatoração):
+        A responsabilidade de calcular o valor total da venda foi movida para a classe "CalculoVenda". Isso torna o código mais modular e facilita futuras alterações ou extensões da lógica de cálculo.
+    */
 
     public double calcularFrete() {
         if (cliente.getTipo() == ClienteTipo.PRIME) {
