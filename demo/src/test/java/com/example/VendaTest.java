@@ -35,9 +35,9 @@ public class VendaTest {
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-            {new Cliente("Maria", ClienteTipo.ESPECIAL), new Produto(1, "Camiseta", 100.0, "peça"), 1, MetodoPagamento.CARTAO_CREDITO_EMPRESA, 81.0, 3.5, new double[]{18.0, 0.0}, new Endereco("DF", true)},
-            {new Cliente("Pedro", ClienteTipo.PRIME), new Produto(1, "Camiseta", 100.0, "peça"), 1, MetodoPagamento.DINHEIRO, 100.0, 0.0, new double[]{18.0, 0.0}, new Endereco("DF", true)},
-            {new Cliente("João", ClienteTipo.PADRAO), new Produto(1, "Camiseta", 100.0, "peça"), 1, MetodoPagamento.CARTAO_CREDITO_OUTROS, 100.0, 7.0, new double[]{12.0, 4.0}, new Endereco("SP", true)}
+            {new Cliente("Maria", ClienteTipo.ESPECIAL), new Produto(1, "Camiseta", new Preco(100.0), "peça"), 1, MetodoPagamento.CARTAO_CREDITO_EMPRESA, 81.0, 3.5, new double[]{18.0, 0.0}, new Endereco("DF", true)},
+            {new Cliente("Pedro", ClienteTipo.PRIME), new Produto(1, "Camiseta", new Preco(100.0), "peça"), 1, MetodoPagamento.DINHEIRO, 100.0, 0.0, new double[]{18.0, 0.0}, new Endereco("DF", true)},
+            {new Cliente("João", ClienteTipo.PADRAO), new Produto(1, "Camiseta", new Preco(100.0), "peça"), 1, MetodoPagamento.CARTAO_CREDITO_OUTROS, 100.0, 7.0, new double[]{12.0, 4.0}, new Endereco("SP", true)}
         });
     }
 

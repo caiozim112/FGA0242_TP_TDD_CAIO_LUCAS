@@ -13,13 +13,12 @@ import static org.junit.Assert.*;
 public class ProdutoTest {
     private int codigo;
     private String descricao;
-    private double valor;
+    private Preco preco;
     private String unidade;
 
     public ProdutoTest(int codigo, String descricao, double valor, String unidade) {
         this.codigo = codigo;
         this.descricao = descricao;
-        this.valor = valor;
         this.unidade = unidade;
     }
 
@@ -34,10 +33,10 @@ public class ProdutoTest {
 
     @Test
     public void testCadastroProduto() {
-        Produto produto = new Produto(codigo, descricao, valor, unidade);
+        Produto produto = new Produto(codigo, descricao, preco, unidade);
         assertEquals(codigo, produto.getCodigo());
         assertEquals(descricao, produto.getDescricao());
-        assertEquals(valor, produto.getValor(), 0.01);
+        assertEquals(preco.getValor(), produto.getValor(), 0.01);
         assertEquals(unidade, produto.getUnidade());
     }
 }
