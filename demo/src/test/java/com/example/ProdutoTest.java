@@ -18,6 +18,7 @@ public class ProdutoTest {
 
     public ProdutoTest(int codigo, String descricao, double valor, String unidade) {
         this.codigo = codigo;
+        this.preco = new Preco(valor);
         this.descricao = descricao;
         this.unidade = unidade;
     }
